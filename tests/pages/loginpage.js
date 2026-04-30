@@ -1,1 +1,3 @@
-console.log("Hi");
+const { expect } = require("@playwright/test");
+
+class LoginPage {}
