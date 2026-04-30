@@ -1,116 +1,97 @@
-const { Given, When, Then, BeforeAll, Before, After, AfterAll, setDefaultTimeout } = require('@cucumber/cucumber');
-const { expect, chromium } = require('@playwright/test');
-const { AddToCartPage } = require('../pages/addtocartpage');
-
+const { Given, When, Then, setDefaultTimeout } = require("@cucumber/cucumber");
+const { expect } = require("@playwright/test");
+const { AddToCartPage } = require("../pages/addtocartpage");
 
 setDefaultTimeout(60000);
 
-
-let browser, context, page, addToCartPage;
-
-
-BeforeAll(async () => {
-    browser = await chromium.launch({ headless: false }); 
+Given("navigate to {string}", async function (url) {
+  await this.page.goto(url);
 });
 
-Before(async () => {
-    context = await browser.newContext();
-    page = await context.newPage();
+When("click on a product on the home page", async function () {
+  this.addToCartPage = new AddToCartPage(this.page);
+  await this.addToCartPage.clickFirstProduct();
 });
 
-After(async () => {
-    await page.close();
-    await context.close();
+When("click on Add to Cart", async function () {
+  await this.addToCartPage.clickAddToCart();
 });
 
-AfterAll(async () => {
-    await browser.close();
+When("click on Checkout in the shopping cart", async function () {
+  await this.addToCartPage.clickCartCheckout();
 });
 
-
-Given("navigate to {string}", async (url) => {
-    await page.goto(url);
+When("select Guest Checkout and click Continue", async function () {
+  await this.addToCartPage.selectGuestCheckout();
 });
 
-When("click on a product on the home page", async () => {
-    addToCartPage = new AddToCartPage(page);
-    await addToCartPage.clickFirstProduct();
+When("enter first name {string}", async function (firstName) {
+  await this.addToCartPage.firstNameInput.fill(firstName);
 });
 
-When("click on Add to Cart", async () => {
-    await addToCartPage.clickAddToCart();
+When("enter last name {string}", async function (lastName) {
+  await this.addToCartPage.lastNameInput.fill(lastName);
 });
 
-When("click on Checkout in the shopping cart", async () => {
-    await addToCartPage.clickCartCheckout();
+When("enter email {string}", async function (email) {
+  await this.addToCartPage.emailInput.fill(email);
 });
 
-When("select Guest Checkout and click Continue", async () => {
-    await addToCartPage.selectGuestCheckout();
+When("enter telephone {string}", async function (telephone) {
+  await this.addToCartPage.telephoneInput.fill(telephone);
 });
 
-When("enter first name {string}", async (firstName) => {
-    await addToCartPage.firstNameInput.fill(firstName);
+When("enter fax {string}", async function (fax) {
+  await this.addToCartPage.faxInput.fill(fax);
 });
 
-When("enter last name {string}", async (lastName) => {
-    await addToCartPage.lastNameInput.fill(lastName);
+When("enter company {string}", async function (company) {
+  await this.addToCartPage.companyInput.fill(company);
 });
 
-When("enter email {string}", async (email) => {
-    await addToCartPage.emailInput.fill(email);
+When("enter address 1 {string}", async function (address1) {
+  await this.addToCartPage.address1Input.fill(address1);
 });
 
-When("enter telephone {string}", async (telephone) => {
-    await addToCartPage.telephoneInput.fill(telephone);
+When("enter address 2 {string}", async function (address2) {
+  await this.addToCartPage.address2Input.fill(address2);
 });
 
-When("enter fax {string}", async (fax) => {
-    await addToCartPage.faxInput.fill(fax);
+When("enter city {string}", async function (city) {
+  await this.addToCartPage.cityInput.fill(city);
 });
 
-When("enter company {string}", async (company) => {
-    await addToCartPage.companyInput.fill(company);
+When("select country {string}", async function (country) {
+  await this.addToCartPage.countryDropdown.selectOption({ label: country });
 });
 
-When("enter address 1 {string}", async (address1) => {
-    await addToCartPage.address1Input.fill(address1);
+When("select region {string}", async function (region) {
+  await this.page.waitForTimeout(2000);
+  await this.addToCartPage.regionDropdown.selectOption({ label: region });
 });
 
-When("enter address 2 {string}", async (address2) => {
-    await addToCartPage.address2Input.fill(address2);
+When("enter zip code {string}", async function (zipCode) {
+  await this.addToCartPage.zipInput.fill(zipCode);
 });
 
-When("enter city {string}", async (city) => {
-    await addToCartPage.cityInput.fill(city);
+When("click Continue on checkout details", async function () {
+  await this.addToCartPage.clickGuestContinue();
 });
 
-When("select country {string}", async (country) => {
-    await addToCartPage.countryDropdown.selectOption({ label: country });
+Then("the Checkout Confirmation page should be displayed", async function () {
+  await expect(this.addToCartPage.pageHeading).toContainText(
+    "Checkout Confirmation",
+    { ignoreCase: true },
+  );
 });
 
-When("select region {string}", async (region) => {
-    
-    await page.waitForTimeout(2000); 
-    await addToCartPage.regionDropdown.selectOption({ label: region });
+When("click on Confirm Order", async function () {
+  await this.addToCartPage.clickConfirmOrder();
 });
 
-When("enter zip code {string}", async (zipCode) => {
-    await addToCartPage.zipInput.fill(zipCode);
-});
-
-When("click Continue on checkout details", async () => {
-    await addToCartPage.clickGuestContinue();
-});
-
-Then("the Checkout Confirmation page should be displayed", async () => {
-    await expect(addToCartPage.pageHeading).toContainText("Checkout Confirmation", { ignoreCase: true });
-});
-
-When("click on Confirm Order", async () => {
-    await addToCartPage.clickConfirmOrder();
-});
-
-Then("the order should be successfully processed", async () => {
-    await expect(addToCartPage.pageHeading).toContainText("Your Order Has Been Processed!", { ignoreCase: true });
+Then("the order should be successfully processed", async function () {
+  await expect(this.addToCartPage.pageHeading).toContainText(
+    "Your Order Has Been Processed!",
+    { ignoreCase: true },
+  );
 });

@@ -14,6 +14,6 @@ Scenario: Login and add product to cart
   When Search for product "shirt"
   And Sort products from high to low
   And Add first product to cart
-  And Go to cart
+  And Go to cart from product page
 
-  Then Cart page should be displayed
+  Then Product cart page should be displayed

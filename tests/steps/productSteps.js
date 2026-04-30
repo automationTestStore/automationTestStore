@@ -32,11 +32,11 @@ When("Add first product to cart", async function () {
 });
 
 // When step - Navigate to the shopping cart
-When("Go to cart", async function () {
+When("Go to cart from product page", async function () {
   await this.productPg.goToCart();
 });
 
 // Then step - Verify that the cart page has been successfully displayed
-Then("Cart page should be displayed", async function () {
+Then("Product cart page should be displayed", async function () {
   await this.productPg.verifyCartPage();
 });

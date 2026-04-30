@@ -1,6 +1,6 @@
 Feature: Register
 
-@Registeration
+@Registration
 Scenario: Registeration
 Given navigate to "https://automationteststore.com/"
 
