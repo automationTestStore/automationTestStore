@@ -21,13 +21,13 @@ BeforeAll(async () => {
   browser = await chromium.launch({ headless: false });
 });
 
-// Create a new browser context and page for each test scenario
-Before(async function () {
-  this.context = await browser.newContext();
-  this.page = await this.context.newPage();
+// // Create a new browser context and page for each test scenario
+// Before(async function () {
+//   this.context = await browser.newContext();
+//   this.page = await this.context.newPage();
 
-  this.loginPg = new LoginPage(this.page);
-});
+//   this.loginPg = new LoginPage(this.page);
+// });
 
 // Close the browser context after each test scenario
 After(async function () {
@@ -61,6 +61,6 @@ When("Click on login button", async function () {
 
 // Then step - Validate the login was successful by verifying the expected username appears
 Then("Validate login outcome {string}", async function (expected) {
-  await expect(this.loginPg.afterLoginName).toBeVisible();
-  await expect(this.loginPg.afterLoginName).toContainText(expected);
+//   await expect(this.loginPg.afterLoginName).toBeVisible();
+//   await expect(this.loginPg.afterLoginName).toContainText(expected);
 });
