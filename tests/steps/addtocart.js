@@ -25,39 +25,39 @@ When("select Guest Checkout and click Continue", async function () {
   await this.addToCartPage.selectGuestCheckout();
 });
 
-When("enter first name {string}", async function (firstName) {
+When("enter guest first name {string}", async function (firstName) {
   await this.addToCartPage.firstNameInput.fill(firstName);
 });
 
-When("enter last name {string}", async function (lastName) {
+When("enter guest last name {string}", async function (lastName) {
   await this.addToCartPage.lastNameInput.fill(lastName);
 });
 
-When("enter email {string}", async function (email) {
+When("enter guest email {string}", async function (email) {
   await this.addToCartPage.emailInput.fill(email);
 });
 
-When("enter telephone {string}", async function (telephone) {
+When("enter guest telephone {string}", async function (telephone) {
   await this.addToCartPage.telephoneInput.fill(telephone);
 });
 
-When("enter fax {string}", async function (fax) {
+When("enter guest fax {string}", async function (fax) {
   await this.addToCartPage.faxInput.fill(fax);
 });
 
-When("enter company {string}", async function (company) {
+When("enter guest company {string}", async function (company) {
   await this.addToCartPage.companyInput.fill(company);
 });
 
-When("enter address 1 {string}", async function (address1) {
+When("enter guest address 1 {string}", async function (address1) {
   await this.addToCartPage.address1Input.fill(address1);
 });
 
-When("enter address 2 {string}", async function (address2) {
+When("enter guest address 2 {string}", async function (address2) {
   await this.addToCartPage.address2Input.fill(address2);
 });
 
-When("enter city {string}", async function (city) {
+When("enter guest city {string}", async function (city) {
   await this.addToCartPage.cityInput.fill(city);
 });
 

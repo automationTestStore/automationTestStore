@@ -8,16 +8,16 @@ Scenario: Add product to cart and complete checkout as a guest
   And click on Checkout in the shopping cart
   And select Guest Checkout and click Continue
   
-  And enter first name "zako"
-  And enter last name "mako"
-  And enter email "zakomako@gmail.com"
-  And enter telephone "9876543210"
-  And enter fax "5550199"
+  And enter guest first name "zako"
+  And enter guest last name "mako"
+  And enter guest email "zakomako@gmail.com"
+  And enter guest telephone "9876543210"
+  And enter guest fax "5550199"
   
-  And enter company "abc"
-  And enter address 1 "asdf"
-  And enter address 2 "ghjk"
-  And enter city "London"
+  And enter guest company "abc"
+  And enter guest address 1 "asdf"
+  And enter guest address 2 "ghjk"
+  And enter guest city "London"
   And select country "United Kingdom"
   And select region "Greater London"
   And enter zip code "123456"

@@ -13,8 +13,11 @@ const { Register } = require("../pages/registerpage");
 
 setDefaultTimeout(60 * 1000);
 
-Given("navigate to register page {string}", async function (url) {
+Before(async function () {
   this.register = new Register(this.page);
+});
+
+Given("navigate to register page {string}", async function (url) {
   await this.register.launchURL(url);
   await expect(this.page).toHaveURL(url);
 });
@@ -54,7 +57,7 @@ When("enter Fax {string}", async function (fax) {
   await expect(this.register.faxTF).toHaveValue(fax);
 });
 
-When("enter register company {string}", async function (company) {
+When("enter company {string}", async function (company) {
   await this.register.fillCompany(company);
   await expect(this.register.companyTF).toHaveValue(company);
 });
@@ -69,7 +72,7 @@ When("enter Address {int} {string}", async function (num, value) {
   }
 });
 
-When("enter register city {string}", async function (city) {
+When("enter city {string}", async function (city) {
   await this.register.fillCity(city);
   await expect(this.register.cityTF).toHaveValue(city);
 });
