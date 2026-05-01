@@ -76,10 +76,6 @@ cucumber.json             # Cucumber configuration
 package.json              # Project dependencies
 ```
 
-## Running Tests
-
-**Note:** This project uses Playwright with BDD integration. All tests are run through Playwright, not Cucumber directly.
-
 ### Run All Tests
 
 ```bash
