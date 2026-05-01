@@ -30,7 +30,10 @@ Before(async function () {
 });
 
 // Close the browser context after each test scenario
-After(async function () {
+After(async function (scenario) {
+  // Take screenshot after every scenario and attach to report
+  const screenshot = await this.page.screenshot();
+  await this.attach(screenshot, "image/png");
   await this.context.close();
 });
 
