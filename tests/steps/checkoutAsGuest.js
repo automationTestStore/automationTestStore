@@ -1,6 +1,6 @@
 const { Given, When, Then, setDefaultTimeout } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
-const { AddToCartPage } = require("../pages/checkoutAsGuestPage");
+const { AddToCartPage } = require("../pages/checkoutAsGuestpage");
 
 setDefaultTimeout(60000);
 
