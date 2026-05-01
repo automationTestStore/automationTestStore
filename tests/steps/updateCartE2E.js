@@ -1,6 +1,6 @@
 const { When, Then } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
-const { CartPage } = require("../pages/cartPage");
+const { CartPage } = require("../pages/updateCartE2Epage");
 
 let cartPage;
 

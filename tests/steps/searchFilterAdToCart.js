@@ -1,5 +1,5 @@
 // Import ProductPage class for page object interactions
-const { ProductPage } = require("../pages/productPage");
+const { ProductPage } = require("../pages/searchFilterAdToCartPage");
 // Import Cucumber hooks and step definitions
 const {
   Given,
