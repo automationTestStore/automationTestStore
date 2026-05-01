@@ -33,9 +33,6 @@ class Automation {
   async checkthecart() {
     await this.cartbutton.click();
   }
-  // async message(){
-  //     await this.cartProduct.textContent();
-  // }
 }
 
 module.exports = { Automation };
